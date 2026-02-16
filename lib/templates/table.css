@@ -1,0 +1,283 @@
+@media print {
+    body {
+        margin-top: -1cm;
+    }
+
+    @page {
+        size: A4 portrait;
+        margin-top: -0.6cm; /* الهوامش العلوية */
+        margin-right: 0.5cm;
+        margin-bottom: 1cm;
+        margin-left: 1cm;
+    }
+
+}
+body {
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    text-align: right;
+    margin: 0;
+    padding: 0;
+    margin-top: 0px;
+    padding-top: 0px;
+    box-sizing: border-box; /* لضمان أن الأحجام لا تتجاوز الحاوية */
+}
+
+.report-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px; /* تقليل المسافة السفلية */
+    margin-top: 25px;
+}
+
+.header-content .left-img {
+    width: 90px;
+    height: auto;
+    margin: 0px 10px 10px 0px;
+    padding: 0;
+}
+.header-content .right-img {
+    padding: 0;
+    margin: 0px 0px 10px 0px !important; /* تعيين الأولوية */
+    margin-top: 0px !important; /* تعيين الأولوية للهامش العلوي */
+    width: 165px;
+    height: auto;
+    background-color: #fff;
+}
+
+.header-image {
+    width: auto;
+    height: 24px; /* نفس ارتفاع النص */
+    display: block;
+    margin: 0 auto; /* لجعل الصورة في المركز */
+}
+
+.header-text {
+    text-align: center;
+    font-size: 12px;
+}
+
+.report-header {
+    text-align: center;
+    margin-bottom: 8px;
+    margin-top: 10cap;
+}
+
+.report-header h1 {
+    margin: 0;
+    font-size: 22px;
+    color: #2c3e77;
+}
+
+.report-header h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #366fb5;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    border: 1px solid #ececec;
+    border-radius: 9px;
+    overflow: hidden;
+    font-size: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4px;
+}
+
+td {
+    border: 1px solid #ececec;
+    padding: 8px;
+    text-align: center;
+}
+
+.colspan-center {
+    text-align: center; /* محاذاة النصوص في الوسط للخانات التي تحتوي على colspan */
+}
+
+.side-text {
+    color: #366fb5; /* لون النص الجانبي للعمودين في اقصى اليمين واقصى الشمال */
+}
+
+.row1, .row3, .row5, .row7, .row9, .row11 {
+    background-color: #fff;
+    color: #2c3e77;
+}
+
+.row2 {
+    background-color: #2c3e77;
+    color: #fff; /* لون النص أبيض */
+}
+
+.row2 .side-text {
+    color: #fff; /* لون النص الجانبي في العمودين الأيمن والأيسر للصف 2 */
+}
+
+.row4, .row6, .row8, .row10 {
+    background-color: #f8f8f9;
+    color: #2c3e77;
+}
+
+.row4 .side-text, .row6 .side-text, .row8 .side-text, .row10 .side-text {
+    color: #366fb5; /* لون النص الجانبي في العمودين الأيمن والأيسر لهذه الصفوف */
+}
+
+.width-17-5 {
+    width: 33.5%;
+}
+
+.width-32-5 {
+    width: 16.5%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-content: start;
+    height: auto; /* إزالة التحديد الثابت للطول */
+    break-inside: avoid; /* تجنب كسر الصفحة داخل المحتوى */
+    margin-bottom: 10px; /* إضافة هامش سفلي بسيط */
+    padding: 10px; /* إضافة حواف داخلية لضمان التناسب */
+}
+.fic{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* القسم اليمنى: دفع الصورة والنصوص قليلًا إلى اليمين */
+.on-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;  /* محاذاة المحتوى إلى اليمين */
+    text-align: right;
+}
+.right-image {
+    max-width: 140px;   /* limit width for very wide logos */
+    max-height: 90px;   /* limit height for tall/square logos */
+    width: auto;        /* preserve aspect ratio */
+    height: auto;       /* preserve aspect ratio */
+    margin-right: 50px; /* keep positioning */
+    padding-right: 10px;
+}
+
+.right-image.is-landscape {
+    margin-right: 32px; /* extra shift for landscape only */
+    margin-top: 23px;
+}
+
+.middle{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+.hospitals{
+    display: inline-flex;
+    align-items: right;
+    flex-direction: column;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.footer-text-h {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 10px;
+    line-height: 20px;
+    letter-spacing: -0.02em;
+    margin-right: 50px;
+    margin-bottom: 0px;
+}
+
+/* القسم اليسرى: دفع الصورة والنصوص قليلًا إلى اليسار */
+.on-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* محاذاة المحتوى إلى اليسار */
+    text-align: left;
+    margin-left: 10px;       /* زيادة الهامش لدفع المحتوى أكثر نحو اليسار */
+}
+
+.left-image {
+    width: 60px;        /* fixed box width */
+    height: 60px;       /* fixed box height */
+    object-fit: contain; /* keep aspect ratio and fit inside box */
+    margin-left: 60px;  /* دفع الصورة أكثر نحو اليسار */
+    padding-left: 25px;
+}
+
+.f-cont {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-text {
+    display: inline-flex;
+    align-items: left;
+    flex-direction: column;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+.footer-text,
+.footer-text-center,
+.footer-link {
+    display: flex;
+    flex-direction: column;
+    font-size: 9px;
+    padding: 0px;
+    margin: 3px 0 0 3px;
+    line-height: 18px;
+    letter-spacing: -0.02em;
+}
+
+.footer-link {
+    color: #001ee4;
+    margin-bottom: 0px;
+}
+
+.end {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px 20px 0px 20px;
+}
+
+.timestamp {
+    text-align: left;
+    font-size: 10px;
+    padding-top: 4px;
+    white-space: pre-line;
+}
+
+.static-image {
+    align-self: right;
+    height: 100px;
+    width: 100px;
+    margin-top: 3px;
+    margin-right: 5px;
+}
+
+.footer-text-p {
+    font-weight: normal;
+}
+
+    .footer-content {
+        height: auto;
+        page-break-inside: avoid;
+    }

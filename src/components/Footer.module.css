@@ -1,0 +1,102 @@
+body {
+    margin:0;
+}
+.footer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+  color: white;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  background-color: #366fb5;
+  position: relative;
+  margin-top: 50px;
+  font-family: 'Cairo', sans-serif;
+}
+
+.footerContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+}
+
+.footerImg1,
+.footerImg2 {
+  height: 50px;
+  width: auto;
+  margin: 0 1px;
+  filter: brightness(0) invert(1);
+}
+
+.footerImg2 {
+  height: 80px;
+}
+
+.verticalLine {
+  height: 50px;
+  width: 1px;
+  background-color: white;
+  border-radius: 1px;
+  margin: 0 10px;
+}
+
+.ft {
+  text-align: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.footerLinks {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.footerLink {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  gap: 5rem;
+  flex-wrap: nowrap;
+  width: auto;
+  flex-shrink: 1;
+}
+.footerSocial {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: row;
+  gap: 10px; /* إضافة مسافة بين العناصر */
+}
+
+.contactInfo span {
+  padding: 0 5px; /* إضافة padding بين الـ spans */
+}
+
+.socialIcons {
+  display: flex;
+  flex-direction: row;
+  gap: 15px; /* إضافة مسافة بين الأيقونات */
+}
+
+.socialIcon {
+  width: 24px;
+  height: 24px;
+}  

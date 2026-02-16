@@ -1,0 +1,170 @@
+/* Ensure headings and highlights use Cairo explicitly */
+.h1, .h2, .highlight, .errorMessage {
+  font-family: var(--font-cairo-regular);
+}
+
+
+/* تنسيق البطاقة لأجهزة الكمبيوتر */
+@media (min-width: 768px) {
+  .card {
+    background-color: white;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 30px rgba(93, 62, 62, 0.1);
+    position: relative;
+    overflow: hidden;
+    font-family: var(--font-cairo-regular);
+    padding: 1.5cap;
+    width: 90%;
+    max-width: 330px;
+    margin: auto;
+    margin-top: 50px;
+    padding-bottom: 5cap;
+    height: 400px;
+  }
+
+}
+
+/* تنسيق البطاقة لأجهزة الهواتف */
+@media (max-width: 767px) {
+  .card {
+    background-color: transparent;
+    border-radius: 0;
+    text-align: center;
+    display: block;
+    box-shadow: none;
+    padding: 0;
+    width: 100%;
+    margin: 0;
+    font-family: var(--font-cairo-regular);
+    margin-top: 0.1px;
+  }
+
+  .card .h1, .card .h2, .card .highlight, .card .errorMessage {
+    text-align: center;
+    padding-top: 10px;
+  }
+}
+
+.h1 {
+  color: #0957b6;
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 1px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.highlight {
+  position: relative;
+  z-index: 1;
+}
+
+.highlight::before {
+  content: '';
+  position: absolute;
+  top: 56%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 70%;
+  height: 0.8em;
+  background-color: rgba(121, 180, 220, 0.35);
+  margin-bottom: 2px;
+  z-index: -1;
+}
+
+.h2 {
+  color: #737373;
+  font-size: 11.8px;
+  font-weight: lighter;
+  text-align: center;
+  line-height: 2;
+  gap: 5px;
+}
+
+.errorMessage {
+  color: #ff0000;
+  margin-bottom: 5px;
+  font-size: 10px;
+  text-align: center;
+}
+
+.inputGroup1{
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative;
+  margin-top: 1cap;
+}
+.inputGroup2 {
+  width: 100%;
+  margin-bottom: 10px;
+  position: relative;
+  margin-top: 1px;
+}
+.inputGroup2 {
+  margin-bottom: 2cap;
+}
+
+.passwordRecovery {
+  font-size: small;
+  align-self: flex-start;
+  text-align: right;
+}
+
+.input {
+  font-family: var(--font-cairo-regular);
+  border: 1pt solid #dfdfdf;
+  border-radius: 5px;
+  color: #737373;
+  transition: border-color 0.3s ease;
+  margin: 5px 0 1px 0;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #71bbdd;
+}
+
+@media (min-width: 768px) {
+  .input {
+    width: 300px;
+    padding: 4px;
+    font-size: 13px;
+    margin-top: 1px;
+  }
+}
+
+@media (max-width: 767px) {
+  .input {
+    width: 310px;
+    padding: 7px;
+    font-size: 11px;
+    margin: 5px auto 5px auto;
+  }
+}
+
+.button {
+  box-shadow: 0px 7px 30px -10px rgba(var(--color_primary_default_rgb), 0.1);
+  background-color: rgb(39, 104, 183);
+  font-family: var(--font-cairo-regular);
+  font-size: 12px;
+  color: white;
+  border: solid 1px rgb(127, 149, 235);
+  border-radius: 5px;
+  transition: background 200ms;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  margin: 1.5cap auto 0;
+  /* تم استبدال width و height بـ padding لمرونة أكبر */
+  padding: 2px 8px 2px 8px; /*أعلى يمين أسفل يسار*/
+  width: 90px; /* تحديد عرض ثابت لتوحيد حجم الأزرار */
+}
+
+.button:hover {
+  background-color: #415184;
+}

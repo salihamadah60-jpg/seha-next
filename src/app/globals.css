@@ -1,0 +1,30 @@
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-cairo-regular);
+  --font-mono: var(--font-cairo-bold);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Global baseline only. Page-specific styles must live in CSS Modules. */
+body {
+  background-color: #ffffff;
+  font-family: var(--font-cairo-regular), 'Noto Sans Arabic', 'Noto Naskh Arabic', 'Tajawal', 'Segoe UI', Tahoma, Arial, system-ui, sans-serif;
+}
+
+/* Home page specific body class (set via BodyStyleManager) */
+body.home-page-body {
+  height: 100vh;
+  position: relative;
+}

@@ -1,0 +1,108 @@
+body {
+    margin:0;
+}
+.header {
+    background-color: #f6f6f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+.logo {
+    align-self: flex-end;
+    padding: 0px 20px 0px 0px;
+    height: auto;
+    width: 110px;
+    display: flex;
+    margin-left: auto; /* لضمان أن الشعار على أقصى اليمين */
+}
+
+.hamburger {
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    align-self: center;
+    width: 35px;
+    height: 21px;
+    padding-left: 25px;
+    display: flex;
+}
+
+.line {
+    height: 3px;
+    width: 85%;
+    border-radius: 2px;
+    background-color: #366fb5;
+}
+
+.hamburgerDropdown {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0; /* نقل اليمين إلى 20px */
+    right: 0;
+    bottom: 0;
+    background-color: #f6f7f9;
+    z-index: 1000;
+    animation: slideDown 0.3s ease;
+    padding: 0;
+    width: 100%;
+    max-height: 30%;
+    overflow-y: auto;
+}
+
+/* عند إضافة كلاس active، يتم إظهار القائمة */
+.active {
+    display: block;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.hamburgerDropdown a {
+    display: block;
+    margin: 13px 0;
+    color: #08458f;
+    text-decoration: none;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+}
+
+/* 
+  توحيد أنماط الأزرار داخل القائمة المنسدلة.
+*/
+.hamburgerDropdown button {
+    /* إعادة تعيين أنماط الزر الافتراضية */
+    background: #2972cc;
+    border: solid 1px #f4f6f9;
+    border-radius: 5px;
+    padding: 2px 4px 2px 4px;
+    font: inherit; /* ليرث الخط من العنصر الأب */
+    cursor: pointer;
+    /* تطبيق نفس أنماط الروابط */
+    display: flex;
+    justify-self: center;
+    margin: 13px 0;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+
+}
+
+.closeBtn {
+    position: absolute;
+    top: 20px; /* نقل اليمين إلى 20px */
+    left: 30px;
+    border-radius: 2px;
+    cursor: pointer;
+    color: #08458f;
+    font-size: 24px;
+    padding: 0px 0px 0px 20px;
+}

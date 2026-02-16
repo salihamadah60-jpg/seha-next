@@ -1,0 +1,363 @@
+/* استخدام Cairo محلياً - لا حاجة لاستيراد خارجي هنا */
+
+/* تطبيق التعديلات على adminDashboard فقط */
+.adminDashboard {
+  padding: 20px;
+  background: linear-gradient(135deg, #f6d365, #fda085);
+  border-radius: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: adminFadeIn 1.5s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.adminDashboard:before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, rgba(255, 0, 150, 0.7), rgba(0, 200, 255, 0.7));
+  animation: adminGlowing 5s infinite alternate;
+  border-radius: 50%;
+  opacity: 0.9;
+  z-index: -1;
+}
+
+@keyframes adminGlowing {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  100% { transform: translate(-50%, -50%) scale(1.7); }
+}
+
+.buttonsContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  animation: adminSlideIn 1.2s ease-in-out;
+  align-items: center;
+}
+
+.buttonsContainer button {
+  padding: 14px 28px; /* balanced for both mobile & desktop */
+  background: linear-gradient(45deg, #12c2e9, #c471ed, #f64f59);
+  color: white;
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  box-shadow: 0 10px 22px rgba(18, 194, 233, 0.35);
+  animation: adminPulse 1.8s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  font-size: 0.95rem; /* prevent overflow */
+  line-height: 1.2;   /* tighten line height */
+  white-space: nowrap; /* keep label on one line */
+}
+
+.buttonsContainer button::after {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.buttonsContainer button::before{
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000, #ffff00, #ff00ff, #fda085,
+    #f64f59, #12c2e9, #c471ed, #f6d365
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 600%;
+  z-index: -1;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  filter: blur(10px);
+  animation: adminBorderFlow 20s linear infinite;
+  transition: opacity .3s ease-in-out;
+}
+
+@keyframes adminBorderFlow {
+  0% {background-position: 0% 0%;}
+  50% {background-position: 200% 200%;}
+  100% {background-position: 0% 0%;}
+}
+
+@keyframes adminPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.buttonsContainer button:hover {
+  background: linear-gradient(60deg, #12c2e9, #c471ed, #f64f59);
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 14px 36px rgba(18, 194, 233, 0.45);
+}
+
+.leaveForm {
+  display: grid; /* grid for responsive columns */
+  grid-template-columns: 1fr; /* default single column */
+  gap: 20px 24px; /* row-gap col-gap */
+  background: #fff;
+  padding: 36px;
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  animation: adminFadeIn 1.2s ease-in-out;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.leaveForm:before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, rgba(255, 0, 150, 0.7), rgba(0, 200, 255, 0.7));
+  animation: adminGlowing 5s infinite alternate;
+  border-radius: 50%;
+  opacity: 0.9;
+  z-index: -1;
+}
+
+.leaveForm label {
+  font-family: var(--font-cairo-regular), 'Cairo', sans-serif;
+  margin-bottom: 15px;
+  color: #495057;
+  font-weight: bold;
+  font-size: 1.1em;
+  animation: adminLabelGlow 2s infinite;
+}
+
+.leaveForm input {
+  padding: 20px;
+  border: 3px solid #ced4da;
+  border-radius: 20px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: linear-gradient(45deg, #e9ecef, #ffffff);
+  animation: adminPlaceholderFadeIn 1.5s ease-in-out;
+}
+
+.leaveForm input:focus {
+  border-color: #12c2e9;
+  box-shadow: 0 0 25px rgba(18, 194, 233, 0.6);
+}
+
+.leavesList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: linear-gradient(to right, #f9f9f9, #f6d365, #fda085);
+  border-bottom: 3px solid #ccc;
+  border-radius: 20px;
+  animation: adminListItemFadeIn 1.5s ease-in-out;
+}
+
+/* Layout helpers */
+.formGroup { display: flex; flex-direction: column; }
+.relativeGroup { position: relative; }
+.radioGroup { display: flex; gap: 1rem; }
+.radioOption { display: flex; align-items: center; gap: 0.5rem; }
+.manageLeavesSection { margin-top: 20px; }
+.searchControls { display: flex; gap: 1rem; margin-bottom: 20px; }
+.leavesList { list-style: none; padding: 0; margin-top: 20px; }
+.leavesList li { background: rgba(255, 255, 255, 0.1); padding: 10px; margin-bottom: 10px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center; }
+
+.hospitalDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #fff;
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0;
+  max-height: 50vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  z-index: 1000;
+}
+.hospitalNoSuggestions { padding: 10px; color: #888; }
+.hospitalItem { padding: 10px; cursor: pointer; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #eee; }
+.hospitalItemText { display: flex; flex-direction: column; }
+.hospitalNamePrimary { font-weight: 600; }
+.hospitalNameSecondary { font-size: 12px; color: #666; }
+.hospitalPreviewRow { display: flex; align-items: center; gap: 10px; }
+.hospitalPreviewImage { object-fit: contain; border: 1px solid #ddd; border-radius: 6px; }
+
+.submitButton {
+  margin-top: 20px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #12c2e9 0%, #c471ed 50%, #f64f59 100%);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-family: 'Cairo', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px rgba(18, 194, 233, 0.3);
+  width: 100%;
+}
+
+.submitButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(18, 194, 233, 0.5);
+  filter: brightness(1.1);
+}
+
+.submitButton:active {
+  transform: translateY(-1px);
+}
+
+.submitButton:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.fileInputContainer {
+  position: relative;
+  margin-top: 10px;
+}
+
+.hiddenInput {
+  display: none;
+}
+
+.uploadButton {
+  display: inline-block;
+  padding: 12px 24px;
+  background: linear-gradient(45deg, #12c2e9, #c471ed);
+  color: white;
+  border-radius: 15px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: none;
+  font-family: 'Cairo', sans-serif;
+}
+
+.uploadButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(18, 194, 233, 0.4);
+}
+
+.hijriDate {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 5px;
+}
+
+.smsLabel {
+  font-family: var(--font-cairo-regular), 'Cairo', sans-serif;
+  margin-bottom: 10px;
+  color: #495057;
+  font-weight: bold;
+}
+
+.removeLogoButton {
+  padding: 8px 16px;
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.fileStatus {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #28a745;
+  font-weight: bold;
+}
+
+.downloadSection {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.downloadButton {
+  padding: 18px 40px;
+  background: linear-gradient(45deg, #00b09b, #96c93d);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.3rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 12px 24px rgba(0, 176, 155, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.downloadButton:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 176, 155, 0.6);
+}
+
+.downloadButton:active {
+  transform: scale(0.98);
+}
+
+/* Responsive */
+@media (min-width: 1024px) {
+  .adminDashboard { padding: 32px; }
+  .buttonsContainer { gap: 28px; }
+  .buttonsContainer button { padding: 14px 24px; font-size: 1rem; }
+  .leaveForm { padding: 40px; grid-template-columns: repeat(2, 1fr); }
+  .leaveForm label { font-size: 1.1em; }
+  .leaveForm input { font-size: 1rem; }
+  .leaveForm button[type="submit"] { grid-column: 1 / -1; justify-self: start; }
+}
+
+@media (hover: none) {
+  .buttonsContainer button:hover,
+  .leaveForm button:hover { transform: none; }
+}
+
+@media (max-width: 768px) {
+  .adminDashboard { padding: 12px; border-radius: 16px; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+  .buttonsContainer { flex-wrap: wrap; gap: 10px; }
+  .buttonsContainer button { padding: 12px 16px; border-radius: 12px; font-size: 0.9rem; animation: adminPulse 1.8s ease-in-out infinite; }
+  .leaveForm { padding: 16px; gap: 12px; border-radius: 16px; grid-template-columns: 1fr; }
+  .leaveForm label { font-size: 0.95rem; margin-bottom: 6px; }
+  .leaveForm input { padding: 12px; font-size: 0.95rem; border-width: 2px; }
+  .leaveForm button { padding: 12px 16px; font-size: 0.95rem; border-radius: 12px; animation: adminPulse 1.8s ease-in-out infinite; }
+  .leavesList li { padding: 12px; border-radius: 12px; }
+}
+
+/* Animations (scoped names to avoid global collision) */
+@keyframes adminFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes adminPlaceholderFadeIn { 0% { opacity: 0.6; } 100% { opacity: 1; } }
+@keyframes adminListItemFadeIn { 0% { opacity: 0; transform: translateY(6px); } 100% { opacity: 1; transform: translateY(0); } }
+@keyframes adminLabelGlow { 0% { text-shadow: 0 0 0 rgba(18, 194, 233, 0.0); } 100% { text-shadow: 0 0 8px rgba(18, 194, 233, 0.5); } }

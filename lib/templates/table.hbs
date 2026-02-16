@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>تقرير الإجازة المرضية</title>
+  <!-- CSS is injected by the server-side renderer via page.addStyleTag; the link below is intentionally omitted to avoid network fetch during PDF render -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="report-container">
+    <div class="header-content">
+      <div>
+        <img src="{{base64Images.logoRight}}" alt="Logo Right Image" class="right-img">
+      </div>
+      <div class="header-text">
+      <img src="{{base64Images.headerImage}}" alt="Header Image" class="header-image">
+        <div>Kingdom of Saudi Arabia</div>
+      </div>
+      <div>
+        <img src="{{base64Images.logoLeft}}" alt="Logo Left Image" class="left-img">
+      </div>
+    </div>
+    <div class="report-header">
+      <h1>تقرير الإجازة المرضية</h1>
+      <h2>Sick Leave Report</h2>
+    </div>
+<table>
+  <tbody>
+    <tr class="row1">
+      <td class="side-text width-32-5">رمز الخدمة</td>
+      <td class="colspan-center width-17-5" colspan="2">{{servicecode}}</td>
+      <td class="side-text width-32-5">Leave ID</td>
+    </tr>
+    <tr class="row2">
+      <td class="side-text width-32-5">مدة الإجازة</td>
+      <td class="width-17-5">{{leaveDuration}} يوم ( من {{startDateHijri}} إلى {{endDateHijri}} )</td>
+      <td class="width-17-5">{{leaveDuration}}days ( From {{startDate}} to {{endDate}} )</td>
+      <td class="side-text width-32-5">Leave Duration</td>
+    </tr>
+    <tr class="row3">
+      <td class="side-text width-32-5">تاريخ الدخول</td>
+      <td class="width-17-5">{{startDateHijri}}</td>
+      <td class="width-17-5">{{startDate}}</td>
+      <td class="side-text width-32-5">Admission Date</td>
+    </tr>
+    <tr class="row4">
+      <td class="side-text width-32-5">تاريخ الخروج</td>
+      <td class="width-17-5">{{endDateHijri}}</td>
+      <td class="width-17-5">{{endDate}}</td>
+      <td class="side-text width-32-5">Discharge Date</td>
+    </tr>
+    <tr class="row5">
+      <td class="side-text width-32-5">تاريخ إصدار التقرير</td>
+      <td class="colspan-center width-17-5" colspan="2">{{issueDate}}</td>
+      <td class="side-text width-32-5">Issue Date</td>
+    </tr>
+    <tr class="row6">
+      <td class="side-text width-32-5">الاسم</td>
+      <td class="width-17-5">{{name.arabic}}</td>
+      <td class="width-17-5">{{name.english}}</td>
+      <td class="side-text width-32-5">Name</td>
+    </tr>
+    <tr class="row7">
+      <td class="side-text width-32-5">رقم الهوية / الإقامة</td>
+      <td class="colspan-center width-17-5" colspan="2">{{idNumber}}</td>
+      <td class="side-text width-32-5">National ID/Iqama</td>
+    </tr>
+    <tr class="row8">
+      <td class="side-text width-32-5">الجنسية</td>
+      <td class="width-17-5">{{nationality.arabic}}</td>
+      <td class="width-17-5">{{nationality.english}}</td>
+      <td class="side-text width-32-5">Nationality</td>
+    </tr>
+    <tr class="row9">
+      <td class="side-text width-32-5">جهة العمل</td>
+      <td class="width-17-5">{{workPlace}}</td>
+      <td class="width-17-5"></td>
+      <td class="side-text width-32-5">Employer</td>
+    </tr>
+    <tr class="row10">
+      <td class="side-text width-32-5">اسم الطبيب</td>
+      <td class="width-17-5">{{doctorName.arabic}}</td>
+      <td class="width-17-5">{{doctorName.english}}</td>
+      <td class="side-text width-32-5">Physician Name</td>
+    </tr>
+    <tr class="row11">
+      <td class="side-text width-32-5">المسمى الوظيفي</td>
+      <td class="width-17-5">{{jobTitle.arabic}}</td>
+      <td class="width-17-5">{{jobTitle.english}}</td>
+      <td class="side-text width-32-5">Position</td>
+    </tr>
+  </tbody>
+</table>
+<div class="footer-content">
+  <div class="fic">
+    <div class="on-right">
+      <img src="{{{base64Images.imageRight}}}" alt="Right Image" class="right-image" onload="if(this.naturalWidth>this.naturalHeight)this.classList.add('is-landscape')">
+    </div>
+    <div class="on-left">
+              <a href="https://seha.live/" target="_blank" rel="noopener noreferrer">
+        <img src="{{base64Images.imageLeft}}" alt="Left Image" class="left-image">
+      </a>
+    </div>
+  </div>
+  <div class="middle">
+            <div class="hospitals">
+      <div class="footer-text-h">{{hospital.arabic}}</div>
+      <div class="footer-text-h">{{hospital.english}}</div>
+       </div>
+      <div class="left-text">
+      <div class="footer-text">للتحقق من بيانات التقرير يرجى التأكد من زيارة موقع منصة صحة الرسمي</div>
+      <div class="footer-text-center">To check the report please visit Seha's Official website</div>
+      <div class="footer-link">
+        <a href="https://seha.live/" target="_blank" rel="noopener noreferrer">
+          https://seha.sa/#/inquiries/slenquiry
+        </a>
+      </div>
+      </div>
+  </div>
+    <div class="end">
+      <img src="{{base64Images.staticImage}}" alt="Static Image" class="static-image">
+      <div class="timestamp">{{timestamp}}</div>
+    </div>
+    </div>
+</div>
+</body>
+</html>
