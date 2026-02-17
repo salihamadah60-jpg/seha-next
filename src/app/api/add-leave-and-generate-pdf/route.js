@@ -110,6 +110,13 @@ export async function POST(request) {
 
   const leaveData = await request.json();
 
+  if (!leaveData.idNumber || !leaveData.servicecode) {
+    return NextResponse.json({ 
+      message: 'بيانات ناقصة: رقم الهوية ورمز الخدمة مطلوبان.',
+      received: { idNumber: !!leaveData.idNumber, servicecode: !!leaveData.servicecode }
+    }, { status: 400 });
+  }
+
   try {
     // Uppercase English names
     if (leaveData?.name?.english) leaveData.name.english = String(leaveData.name.english).toUpperCase();
