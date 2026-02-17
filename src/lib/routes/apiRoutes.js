@@ -7,7 +7,7 @@ import Leave from '../models/Leave.js';
 import User from '../models/User.js';
 import rateLimit from 'express-rate-limit';
 import sendSMS from '../utils/sendSMS.js';
-import puppeteer from 'puppeteer';
+import { getBrowser } from '../browser.js';
 import hbs from 'handlebars';
 import moment from 'moment-hijri'; // استخدم مكتبة moment-hijri
 import dotenv from 'dotenv';
@@ -385,34 +385,11 @@ if (leaveData.sendSMS) {
     const content = await compile('table', leaveData);
     console.log('Compiled HTML content:', content);
 
-  // توليد ملف PDF باستخدام Puppeteer
-  // Prefer LOCAL_CHROME_PATH if valid; otherwise use bundled Chromium
-  let launchOptions = {
-    headless: 'new',
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-  };
-  const chromePath = process.env.LOCAL_CHROME_PATH && process.env.LOCAL_CHROME_PATH.trim();
-  if (chromePath) {
-    if (fs.existsSync(chromePath)) {
-      launchOptions.executablePath = chromePath; // Use local Chrome if path exists
-    } else {
-      console.warn(`LOCAL_CHROME_PATH set but not found at: ${chromePath}. Falling back to bundled Chromium.`);
-    }
-  }
-  const awsChromePath = process.env.AWS_CHROME_PATH && process.env.AWS_CHROME_PATH.trim();
-  if (process.platform !== 'win32' && awsChromePath) {
-    if (fs.existsSync(awsChromePath)) {
-      launchOptions.executablePath = awsChromePath; // Use AWS chrome path on Linux
-    } else {
-      console.warn(`AWS_CHROME_PATH set but not found at: ${awsChromePath}. Falling back to default.`);
-    }
-  }
-  console.log('Launching Puppeteer with options:', launchOptions);
-  const browser = await puppeteer.launch(launchOptions);
+    // Launch Browser using helper and build PDF
+    const browser = await getBrowser();
+    const page = await browser.newPage();
 
-  const page = await browser.newPage();
-
-  // ضبط محتوى الصفحة
+    // ضبط محتوى الصفحة
   await page.setContent(content, { waitUntil: 'networkidle0' });
 
   // تحديد مسار ملف CSS لنظام Linux فقط

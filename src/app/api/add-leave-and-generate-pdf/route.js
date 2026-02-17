@@ -4,7 +4,7 @@ import Leave from '@/lib/models/Leave';
 import User from '@/lib/models/User';
 import sendSMS from '@/lib/sendSMS';
 import jwt from 'jsonwebtoken';
-import puppeteer from 'puppeteer';
+import { getBrowser } from '@/lib/browser';
 import hbs from 'handlebars';
 import path from 'path';
 import fs from 'fs';
@@ -213,9 +213,8 @@ export async function POST(request) {
 
     const htmlContent = await compileTemplate('table', templateData);
 
-    // Launch Puppeteer and build PDF
-    const launchOptions = { headless: 'new', args: ['--no-sandbox', '--disable-setuid-sandbox'] };
-    const browser = await puppeteer.launch(launchOptions);
+    // Launch Browser using helper and build PDF
+    const browser = await getBrowser();
     const page = await browser.newPage();
     
     // Set timeout to 0 (disabled) or a high value to avoid crashes on slow environments
