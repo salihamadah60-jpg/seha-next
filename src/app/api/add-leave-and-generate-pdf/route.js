@@ -267,6 +267,10 @@ export async function POST(request) {
     });
   } catch (error) {
     console.error('Error in add-leave-and-generate-pdf:', error);
-    return NextResponse.json({ message: 'Failed to add leave and generate PDF' }, { status: 500 });
+    return NextResponse.json({ 
+      message: 'فشل إضافة الإجازة وإنشاء الملف.',
+      error: error.message,
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    }, { status: 500 });
   }
 }
