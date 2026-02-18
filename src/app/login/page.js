@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import './Login.css';
+import styles from './Login.css';
+
 
 const Login = ({ onLoginSuccess }) => {
   const [idNumber, setIdNumber] = useState('');
