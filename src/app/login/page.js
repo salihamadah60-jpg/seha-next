@@ -1,15 +1,16 @@
 "use client";
 
 import { useState } from 'react';
-import PropTypes from 'prop-types';
+import { useRouter } from 'next/navigation';
 import styles from './Login.css';
 
 
-const Login = ({ onLoginSuccess }) => {
+const Login = () => {
   const [idNumber, setIdNumber] = useState('');
   const [servicecode, setServiceCode] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -37,7 +38,15 @@ const Login = ({ onLoginSuccess }) => {
         throw new Error(data.message || 'فشل تسجيل الدخول. تأكد من صحة البيانات.');
       }
       
-      onLoginSuccess(data.token, idNumber, servicecode, data.role);
+      localStorage.setItem('token', data.token);
+      localStorage.setItem('idNumber', idNumber);
+      localStorage.setItem('servicecode', servicecode);
+      
+      if (data.role === 'admin') {
+        router.push('/admin-dashboard');
+      } else {
+        router.push('/data-display');
+      }
     } catch (error) {
       setErrorMessage(error.message);
     } finally {
@@ -95,10 +104,6 @@ const Login = ({ onLoginSuccess }) => {
       </div>
     </div>
   );
-};
-
-Login.propTypes = {
-  onLoginSuccess: PropTypes.func.isRequired,
 };
 
 export default Login;
