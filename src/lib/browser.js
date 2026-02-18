@@ -4,13 +4,19 @@ export async function getBrowser() {
     const puppeteer = (await import('puppeteer-core')).default;
     const chromium = (await import('@sparticuz/chromium')).default;
     
-    // Optional: set graphics to false if not needed to save space/memory
-    // chromium.setGraphicsMode = false;
+    // Disabling graphics mode to save space/memory and avoid missing libs on Vercel
+    chromium.setGraphicsMode = false;
+    
+    const executablePath = await chromium.executablePath();
+    if (!executablePath) {
+      throw new Error('Chromium executable path not found');
+    }
+    console.log('Launching Puppeteer with Chromium at:', executablePath);
 
     return await puppeteer.launch({
-      args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
+      args: [...chromium.args, '--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
       defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath(),
+      executablePath: executablePath,
       headless: chromium.headless,
       ignoreHTTPSErrors: true,
     });
