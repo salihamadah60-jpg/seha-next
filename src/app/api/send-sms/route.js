@@ -16,7 +16,7 @@ export async function POST(request) {
   }
 
   try {
-    const response = await sendSMS(to, message);
+    await sendSMS(to, message);
     return NextResponse.json({ message: 'تم إرسال الرسالة بنجاح!' }, { status: 200 });
   } catch (error) {
     return NextResponse.json({ message: 'فشل في إرسال الرسالة', error: error.message }, { status: 500 });

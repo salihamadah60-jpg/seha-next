@@ -1,7 +1,6 @@
 import express from 'express';
 import apiRoutes from './apiRoutes.js';
 import pdfkit from 'pdfkit'; // احتفظ فقط بـ pdfkit
-import fs from 'fs';
 
 const router = express.Router();
 
@@ -27,7 +26,7 @@ router.get('/convert', async (req, res) => {
             const doc = new pdfkit();
             doc.text('Example content');
             let chunks = [];
-            return new Promise((resolve, reject) => {
+            return new Promise((resolve) => {
                 doc.on('data', chunk => chunks.push(chunk));
                 doc.on('end', () => resolve(Buffer.concat(chunks)));
                 doc.end();

@@ -14,11 +14,11 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-function formatHijriDate(dateStr) {
+function formatHijriDate(dateStr) { // eslint-disable-line @typescript-eslint/no-unused-vars
   const [year, month, day] = dateStr.split('/');
   return `${day}-${month}-${year}`;
 }
-function formatGregorianDate(dateStr) {
+function formatGregorianDate(dateStr) { // eslint-disable-line @typescript-eslint/no-unused-vars
   const [year, month, day] = dateStr.split('-');
   return `${day}-${month}-${year}`;
 }
@@ -32,7 +32,7 @@ const router = express.Router();
 // Directory containing hospital images
 const IMAGES_DIR = path.join(__dirname, '../images');
 
-function generateServiceCode() {
+function generateServiceCode() { // eslint-disable-line @typescript-eslint/no-unused-vars
   const prefix = Math.random() < 0.5 ? 'GSL' : 'PSL';
   const randomNumbers = Math.floor(1000000000 + Math.random() * 9000000000);
   return `${prefix}${randomNumbers}`;
@@ -69,7 +69,7 @@ const hospitalsLimiter = rateLimit({
   message: 'Too many search requests, please slow down.'
 });
 
-const queryLimit = rateLimit({
+const queryLimit = rateLimit({ // eslint-disable-line @typescript-eslint/no-unused-vars
   windowMs: 10 * 24 * 60 * 60 * 1000,
   max: 1000,
   message: 'You have reached the maximum number of allowed requests. Please wait until the time period ends.'
@@ -363,7 +363,7 @@ if (leaveData.sendSMS) {
             selectedHospitalImageAbsPath = fallbackCandidate;
           }
         }
-      } catch (e) {
+      } catch {
         // Ignore decode errors and continue with defaults
       }
     }
@@ -488,7 +488,7 @@ if (leaveData.sendSMS) {
         }
         const leave = await Leave.findByIdAndUpdate(req.params.id, req.body, { new: true });
         res.json(leave);
-      } catch (error) {
+      } catch {
         res.status(500).json({ message: 'An error occurred while updating the leave' });
       }
     });
@@ -500,7 +500,7 @@ if (leaveData.sendSMS) {
         }
         await Leave.findByIdAndRemove(req.params.id);
         res.status(204).send();
-      } catch (error) {
+      } catch {
         res.status(500).json({ message: 'An error occurred while deleting the leave' });
       }
     });

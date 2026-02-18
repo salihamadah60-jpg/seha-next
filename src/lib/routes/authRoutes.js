@@ -137,7 +137,7 @@ router.post('/refresh-token', authenticateToken, (req, res) => {
     const verified = jwt.verify(token, process.env.JWT_SECRET, { ignoreExpiration: true });
     const newToken = jwt.sign({ id: verified.id, isAdmin: verified.isAdmin }, process.env.JWT_SECRET, { expiresIn: verified.isAdmin ? '7d' : '3d' });
     res.json({ newToken });
-  } catch (error) {
+  } catch {
     res.status(400).json({ error: 'Invalid token' });
   }
 });

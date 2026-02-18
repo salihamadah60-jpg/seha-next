@@ -3,7 +3,7 @@ import Leave from '@/lib/models/Leave';
 import User from '@/lib/models/User';
 import sendSMS from '@/lib/sendSMS';
 import jwt from 'jsonwebtoken';
-import moment from 'moment-hijri';
+import moment from 'moment-hijri'; // eslint-disable-line @typescript-eslint/no-unused-vars
 
 export async function POST(request) {
   await connectToDatabase();
@@ -16,7 +16,7 @@ export async function POST(request) {
   try {
     const verified = jwt.verify(token, process.env.JWT_SECRET);
     userId = verified.id;
-  } catch (err) {
+  } catch {
     return new Response('Unauthorized', { status: 401 });
   }
 
@@ -86,14 +86,14 @@ export async function GET(request) {
   try {
     const verified = jwt.verify(token, process.env.JWT_SECRET);
     userId = verified.id;
-  } catch (err) {
+  } catch {
     return new Response('Unauthorized', { status: 401 });
   }
 
   try {
     const leaves = await Leave.find({ idNumber: (await User.findById(userId)).idNumber });
     return new Response(JSON.stringify(leaves), { status: 200 });
-  } catch (error) {
+  } catch {
     return new Response('Error fetching leaves', { status: 500 });
   }
 }

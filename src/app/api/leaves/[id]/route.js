@@ -10,7 +10,7 @@ async function ensureAuth(request) {
   try {
     jwt.verify(token, process.env.JWT_SECRET);
     return {};
-  } catch (err) {
+  } catch {
     return { error: 'Unauthorized', status: 401 };
   }
 }

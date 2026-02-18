@@ -1,7 +1,6 @@
 import { NextResponse } from 'next/server';
 import connectToDatabase from '@/lib/mongodb';
 import Leave from '@/lib/models/Leave';
-import jwt from 'jsonwebtoken';
 
 export async function GET(request) {
   await connectToDatabase();
