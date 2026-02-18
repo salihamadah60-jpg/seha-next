@@ -296,7 +296,7 @@ export default function AdminDashboard() {
       } else {
         alert('حدث خطأ أثناء إنشاء ملف الـ PDF.');
       }
-    } catch (error: any) {
+    } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
       console.error('Error occurred while creating PDF link:', error);
       
       let message = 'حدث خطأ أثناء إضافة الإجازة.';

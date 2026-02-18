@@ -99,7 +99,7 @@ export async function POST(request) {
   let verified;
   try {
     verified = jwt.verify(token, process.env.JWT_SECRET);
-  } catch (err) {
+  } catch {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
 
