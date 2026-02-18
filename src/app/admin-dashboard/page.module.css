@@ -161,6 +161,11 @@
 .leaveForm input:focus {
   border-color: #12c2e9;
   box-shadow: 0 0 25px rgba(18, 194, 233, 0.6);
+  background: #fff;
+}
+
+.leaveForm input:focus::placeholder {
+  color: transparent;
 }
 
 .leavesList li {

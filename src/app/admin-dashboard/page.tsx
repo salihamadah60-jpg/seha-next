@@ -296,9 +296,27 @@ export default function AdminDashboard() {
       } else {
         alert('حدث خطأ أثناء إنشاء ملف الـ PDF.');
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error occurred while creating PDF link:', error);
-      alert('حدث خطأ أثناء إضافة الإجازة.');
+      
+      let message = 'حدث خطأ أثناء إضافة الإجازة.';
+      
+      // If response is a Blob (due to responseType: 'blob'), we need to parse it as JSON to see the error message
+      if (error.response?.data instanceof Blob && error.response.data.type === 'application/json') {
+        try {
+          const text = await error.response.data.text();
+          const jsonData = JSON.parse(text);
+          message = jsonData.message || message;
+          if (jsonData.error) message += `\n\nالتفاصيل: ${jsonData.error}`;
+        } catch (parseErr) {
+          console.error('Error parsing blob error message:', parseErr);
+        }
+      } else {
+        message = error.response?.data?.message || message;
+        if (error.response?.data?.error) message += `\n\nالتفاصيل: ${error.response.data.error}`;
+      }
+      
+      alert(message);
     }
   };
 
