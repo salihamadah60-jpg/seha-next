@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "22.x"
+    "node": ">=20"
   },
   "scripts": {
     "dev": "next dev",
@@ -12,6 +12,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@sparticuz/chromium": "131.0.1",
     "@types/moment-hijri": "^2.1.4",
     "axios": "^1.12.2",
     "bcryptjs": "^3.0.2",
@@ -32,10 +33,9 @@
     "moment-hijri": "^3.0.0",
     "mongoose": "^8.18.2",
     "multer": "^2.0.2",
-    "next": "15.5.4",
+    "next": "^16.1.6",
     "path": "^0.12.7",
     "puppeteer-core": "24.22.2",
-    "@sparticuz/chromium": "131.0.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "twilio": "^5.9.0",
@@ -43,7 +43,6 @@
     "ws": "^8.18.3"
   },
   "devDependencies": {
-    "puppeteer": "24.22.2",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
@@ -51,6 +50,7 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
+    "puppeteer": "24.22.2",
     "tailwindcss": "^4",
     "typescript": "^5"
   }
