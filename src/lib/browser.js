@@ -2,17 +2,19 @@ export async function getBrowser() {
   const isVercel = process.env.VERCEL || process.env.NODE_ENV === 'production';
 
   if (isVercel) {
-    // Vercel / Production environment
     const chromium = (await import('@sparticuz/chromium')).default;
     const puppeteer = (await import('puppeteer-core')).default;
 
-    // Optional: set custom fonts if needed
-    // await chromium.font('https://raw.githack.com/googlefonts/noto-emoji/master/fonts/NotoColorEmoji.ttf');
+    // Disabling graphics mode to save space/memory and avoid missing libs on Vercel
+    // Required for AL2023 runtimes (Node 20+)
+    chromium.setGraphicsMode = false;
+
+    const executablePath = await chromium.executablePath();
 
     return await puppeteer.launch({
       args: chromium.args,
       defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath(),
+      executablePath: executablePath,
       headless: chromium.headless,
       ignoreHTTPSErrors: true,
     });
