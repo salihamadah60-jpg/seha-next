@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=20"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "next dev",
@@ -32,9 +32,9 @@
     "moment-hijri": "^3.0.0",
     "mongoose": "^8.18.2",
     "multer": "^2.0.2",
-    "next": "15.1.7",
+    "next": "15.5.4",
     "path": "^0.12.7",
-    "puppeteer-core": "23.11.1",
+    "puppeteer-core": "24.22.2",
     "@sparticuz/chromium": "131.0.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -43,7 +43,7 @@
     "ws": "^8.18.3"
   },
   "devDependencies": {
-    "puppeteer": "23.11.1",
+    "puppeteer": "24.22.2",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",

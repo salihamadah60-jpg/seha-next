@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import styles from './Login.css';
+import './Login.css';
 
 
 const Login = () => {
