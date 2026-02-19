@@ -1,30 +1,26 @@
 export async function getBrowser() {
-  if (process.env.VERCEL || process.env.NODE_ENV === 'production') {
+  const isVercel = process.env.VERCEL || process.env.NODE_ENV === 'production';
+
+  if (isVercel) {
     // Vercel / Production environment
-    const puppeteer = (await import('puppeteer-core')).default;
     const chromium = (await import('@sparticuz/chromium')).default;
-    
-    // Disabling graphics mode to save space/memory and avoid missing libs on Vercel
-    chromium.setGraphicsMode = false;
-    
-    const executablePath = await chromium.executablePath();
-    if (!executablePath) {
-      throw new Error('Chromium executable path not found');
-    }
-    console.log('Launching Puppeteer with Chromium at:', executablePath);
+    const puppeteer = (await import('puppeteer-core')).default;
+
+    // Optional: set custom fonts if needed
+    // await chromium.font('https://raw.githack.com/googlefonts/noto-emoji/master/fonts/NotoColorEmoji.ttf');
 
     return await puppeteer.launch({
-      args: [...chromium.args, '--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage', '--disable-gpu'],
+      args: chromium.args,
       defaultViewport: chromium.defaultViewport,
-      executablePath: executablePath,
+      executablePath: await chromium.executablePath(),
       headless: chromium.headless,
       ignoreHTTPSErrors: true,
     });
   } else {
     // Local development environment
-    const localPuppeteer = (await import('puppeteer')).default;
-    return await localPuppeteer.launch({
-      headless: 'new',
+    const puppeteer = (await import('puppeteer')).default;
+    return await puppeteer.launch({
+      headless: true,
       args: ['--no-sandbox', '--disable-setuid-sandbox'],
     });
   }

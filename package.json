@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": ">=20"
+    "node": "^25.6.1"
   },
   "scripts": {
     "dev": "next dev",
@@ -34,6 +34,7 @@
     "mongoose": "^8.18.2",
     "multer": "^2.0.2",
     "next": "^16.1.6",
+    "node": "^25.6.1",
     "path": "^0.12.7",
     "puppeteer-core": "24.22.2",
     "react": "19.1.0",
