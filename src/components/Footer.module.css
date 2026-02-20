@@ -13,6 +13,8 @@
   position: relative;
   margin-top: 50px;
   font-family: 'Cairo', sans-serif;
+  margin-right: 0;
+  margin-left: 0;
 }
 
 .footerContainer {

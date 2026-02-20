@@ -14,7 +14,7 @@
   "dependencies": {
     "@sparticuz/chromium": "133.0.0",
     "@types/moment-hijri": "^2.1.4",
-    "axios": "^1.12.2",
+    "axios": "^1.13.5",
     "bcryptjs": "^3.0.2",
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
@@ -53,5 +53,8 @@
     "puppeteer": "24.22.2",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "optionalDependencies": {
+    "lightningcss-win32-x64-msvc": "^1.31.1"
   }
 }
